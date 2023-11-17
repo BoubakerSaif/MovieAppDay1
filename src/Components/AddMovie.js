@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
 import Rating from "@mui/material/Rating";
 
-const AddMovie = ({ Adding }) => {
+const AddMovie = ({ Adding, movies, setMovies }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -15,7 +15,8 @@ const AddMovie = ({ Adding }) => {
   };
 
   const saveMovieHandler = () => {
-    Adding(newMovie);
+    // Adding(newMovie);
+    setMovies([...movies, newMovie]);
     handleClose();
   };
 

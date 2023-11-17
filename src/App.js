@@ -7,16 +7,15 @@ import AddMovie from "./Components/AddMovie";
 const App = () => {
   const [movies, setMovies] = useState(data);
 
-  const Adding = (newMovie) => {
-    setMovies([...movies, newMovie]);
-  };
-  console.log(movies);
-  console.log(data);
+  // const Adding = (newMovie) => {
+  //   setMovies([...movies, newMovie]);
+  // };
 
   return (
     <div className="App">
       <br />
-      <AddMovie Adding={Adding} />
+      {/* <AddMovie Adding={Adding}  /> */}
+      <AddMovie movies={movies} setMovies={setMovies} />
       <br />
       <center>
         <MovieList data={movies} />
