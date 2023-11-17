@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
 import Rating from "@mui/material/Rating";
-const AddMovie = () => {
+
+const AddMovie = ({ Adding }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [newMovie, setNewMovie] = useState({
-    title: "",
-    description: "",
-    posterURL: "",
-    rating: 0,
-  });
+  const [newMovie, setNewMovie] = useState({});
 
   const changeHandler = (e) => {
     setNewMovie({ ...newMovie, [e.target.name]: e.target.value });
+  };
+
+  const saveMovieHandler = () => {
+    Adding(newMovie);
+    handleClose();
   };
 
   return (
@@ -62,9 +63,10 @@ const AddMovie = () => {
             <Rating
               name="simple-controlled"
               max={10}
-              //   onChange={(event, newValue) => {
-              //     setValue(newValue);
-              //   }}
+              value={null}
+              onChange={(event, newValue) => {
+                setNewMovie({ ...newMovie, rating: newValue });
+              }}
             />
           </Form>
         </Modal.Body>
@@ -72,7 +74,7 @@ const AddMovie = () => {
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={saveMovieHandler}>
             Confirm
           </Button>
         </Modal.Footer>
