@@ -64,7 +64,7 @@ const AddMovie = ({ Adding, movies, setMovies }) => {
             <Rating
               name="simple-controlled"
               max={10}
-              value={null}
+              value={newMovie.rating}
               onChange={(event, newValue) => {
                 setNewMovie({ ...newMovie, rating: newValue });
               }}
